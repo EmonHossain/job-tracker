@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Job Tracker</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header>
+        <div class="mark">JT</div>
+        <div>
+          <h1>Job Tracker</h1>
+          <p>Temporary, tab-scoped tracking</p>
+        </div>
+      </header>
+
+      <section class="status-card" aria-live="polite">
+        <span id="status-dot" class="status-dot idle"></span>
+        <div>
+          <strong id="status-title">Checking this tab...</strong>
+          <p id="status-message">Looking for a supported job page.</p>
+        </div>
+      </section>
+
+      <section id="job-card" class="job-card hidden">
+        <span class="eyebrow">Detected job</span>
+        <h2 id="job-title"></h2>
+        <p id="job-meta"></p>
+        <p id="job-description"></p>
+      </section>
+
+      <button id="retry-button" class="secondary hidden" type="button">
+        Retry sending
+      </button>
+
+      <form id="settings-form">
+        <label for="endpoint">Remote server endpoint</label>
+        <input
+          id="endpoint"
+          name="endpoint"
+          type="url"
+          placeholder="https://api.example.com/applied-jobs"
+          autocomplete="url"
+        >
+        <button type="submit">Save endpoint</button>
+        <p id="settings-message" class="form-message"></p>
+      </form>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

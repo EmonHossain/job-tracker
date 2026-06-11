@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Job Tracker",
+  "version": "1.0.0",
+  "description": "Detects job postings and sends applied jobs to your server.",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "action": {
+    "default_title": "Job Tracker",
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.linkedin.com/jobs/*",
+        "*://*.indeed.com/*",
+        "*://*.glassdoor.com/*",
+        "*://*.glassdoor.co.uk/*",
+        "*://*.ziprecruiter.com/*",
+        "*://*.monster.com/*",
+        "*://boards.greenhouse.io/*",
+        "*://job-boards.greenhouse.io/*",
+        "*://jobs.lever.co/*",
+        "*://*.myworkdayjobs.com/*"
+      ],
+      "js": [
+        "scripts/job-portals.js",
+        "scripts/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
